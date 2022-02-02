@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>开发接口文档 - WUST MSC Documentations</title>
+        <title>状态码约定 - WUST MSC Documentations</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -49,7 +49,7 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="./" class="dropdown-item active">开发接口文档</a>
+    <a href="../api/" class="dropdown-item">开发接口文档</a>
 </li>
     </ul>
   </li>
@@ -59,7 +59,7 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../rules/" class="dropdown-item">状态码约定</a>
+    <a href="./" class="dropdown-item active">状态码约定</a>
 </li>
     </ul>
   </li>
@@ -74,12 +74,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../" class="nav-link">
+                                <a rel="prev" href="../api/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../rules/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -101,21 +101,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">开发接口文档</a>
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">状态码约定</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">基础接口</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_5" class="nav-link">用户账户系列</a>
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">非失败状态码</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_20" class="nav-link">活动系列</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_28" class="nav-link">证书系列</a>
+            <li class="nav-item" data-level="2"><a href="#_6" class="nav-link">失败状态码</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -126,147 +118,32 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="_1">开发接口文档</h1>
-<p><strong>mention: 所有请求请使用 POST 方法， GET 方法服务器不会响应。请求体和响应体均为 json ，其他格式服务器不会通过。</strong></p>
-<p><strong>除了注册和登录，其他时间的 HTTP Head 里在 Authentication 字段里发送 Token 到服务器中</strong></p>
-<h2 id="_2">基础接口</h2>
-<h3 id="_3">发送手机验证码</h3>
-<p><code>wust.tech/api/phone-code</code></p>
-<p>请求体：</p>
-<pre><code class="language-json">{
-    &quot;phone&quot;:&quot;13012341234&quot;,
-}
-</code></pre>
-<p>响应体：</p>
-<pre><code class="language-json">{
-    &quot;code&quot;:0,
-    &quot;msg&quot;:&quot;OK&quot;,
-}
-</code></pre>
-<h3 id="_4">发送邮箱验证码</h3>
-<p><code>wust.tech/api/email-code</code></p>
-<p>请求体：</p>
-<pre><code class="language-json">{
-    &quot;email&quot;:&quot;abc@qq.com&quot;,
-}
-</code></pre>
-<p>响应体：</p>
-<pre><code class="language-json">{
-    &quot;code&quot;:0,
-    &quot;msg&quot;:&quot;ok&quot;,
-}
-</code></pre>
-<h2 id="_5">用户账户系列</h2>
-<h3 id="_6">创建新用户</h3>
-<p><code>wust.tech/api/create-user</code></p>
-<p>请求体：</p>
-<pre><code class="language-json">{
-    &quot;nickname&quot;:&quot;Kininaru&quot;,
-    &quot;password&quot;:&quot;ILoveXieboQian&quot;,//长度6-16之间的字符串，只能包含数字，大小写字母，且必须包含这三种的两种
-    &quot;phone&quot;:&quot;13012341233&quot;,//unique
-    &quot;phoneCode&quot;:&quot;123123&quot;,//手机验证码
-}
-</code></pre>
-<p>响应体：</p>
-<pre><code class="language-json">{
-    &quot;code&quot;:0,
-    &quot;msg&quot;:&quot;OK&quot;,
-    &quot;token&quot;:&quot;This is the token to me&quot;,//send a token to client.I suggest the token exp time is 1d.
-}
-</code></pre>
-<h3 id="_7">登录</h3>
-<p><code>wust.tech/api/login</code></p>
-<p>请求体：</p>
-<pre><code class="language-json">{
-    &quot;phone&quot;:&quot;13012341234&quot;,
-    &quot;password&quot;:&quot;ILoveXieBoQian&quot;,
-}
-</code></pre>
-<p>响应体：</p>
-<pre><code class="language-json">{
-    &quot;code&quot;:0,
-    &quot;msg&quot;:&quot;ok&quot;,
-    &quot;token&quot;:&quot;this is a token&quot;,
-    &quot;isBanned&quot;:0,
-}
-</code></pre>
-<p>如果被封禁，<code>isBanned=1</code>；未实名认证，<code>isBanned=2</code>；账户正常，<code>isBanned=0</code></p>
-<h3 id="_8">实名认证</h3>
-<p><code>wust.tech/api/real-name-auth</code></p>
-<p>请求体：</p>
-<pre><code class="language-json">{
-    &quot;username&quot;:&quot;张三&quot;,
-    &quot;phone&quot;:&quot;13012341234&quot;,
-    &quot;phoneCode&quot;:&quot;123123&quot;,
-    &quot;company&quot;:&quot;WUST 计卓20&quot;
-}
-</code></pre>
-<p>响应体：</p>
-<pre><code class="language-json">{
-    &quot;code&quot;:0,
-    &quot;msg&quot;:&quot;ok&quot;,
-    &quot;isBanned&quot;:&quot;0&quot;,
-}
-</code></pre>
-<h3 id="_9">验证邮箱</h3>
-<p><code>wust.tech/api/email</code></p>
-<pre><code class="language-json">{
-    &quot;email&quot;:&quot;abc@qq.com&quot;,
-    &quot;emailCode&quot;:&quot;123123&quot;,
-}
-</code></pre>
-<pre><code class="language-json">{
-    &quot;code&quot;:0,
-    &quot;msg&quot;:&quot;ok&quot;,
-}
-</code></pre>
-<h3 id="_10">修改密码</h3>
-<p><code>wust.tech/api/change-password</code></p>
-<pre><code class="language-json">{
-    &quot;oldPwd&quot;:&quot;xxx&quot;,
-    &quot;newPwd&quot;:&quot;xxx&quot;,
-    &quot;newPwdRepeat&quot;:&quot;xxx&quot;,
-}
-</code></pre>
-<pre><code class="language-json">{
-    &quot;code&quot;:0,
-    &quot;msg&quot;:&quot;ok&quot;,
-}
-</code></pre>
-<h3 id="_11">找回密码（手机）</h3>
-<p><code>wust.tech/api/find-account-by-phone</code></p>
-<pre><code class="language-json">{
-    &quot;phone&quot;:&quot;13012341234&quot;,
-    &quot;phoneCode&quot;:&quot;123123&quot;,
-    &quot;newPwd&quot;:&quot;xxx&quot;,
-    &quot;newPwdRepeat&quot;:&quot;xxx&quot;,
-}
-</code></pre>
-<pre><code class="language-json">{
-    &quot;code&quot;:0,
-    &quot;msg&quot;:&quot;ok&quot;,
-}
-</code></pre>
-<h3 id="_12">找回密码（邮箱）</h3>
-<h3 id="_13">查看个人资料</h3>
-<h3 id="_14">修改个人资料</h3>
-<h3 id="_15">编辑用户权限（管理员）</h3>
-<h3 id="_16">封禁用户（管理员）</h3>
-<h3 id="_17">通过手机号查询账户（管理员）</h3>
-<h3 id="_18">通过姓名查找账户（管理员）</h3>
-<h3 id="_19">查询某个人参加过的活动（管理员）</h3>
-<h2 id="_20">活动系列</h2>
-<h3 id="_21">查询个人参加过的活动</h3>
-<h3 id="_22">报名活动</h3>
-<h3 id="_23">拉取活动列表</h3>
-<h3 id="_24">查询活动的部分信息</h3>
-<h3 id="_25">查询活动信息（管理员）</h3>
-<h3 id="_26">添加活动（管理员）</h3>
-<h3 id="_27">编辑活动（管理员）</h3>
-<h2 id="_28">证书系列</h2>
-<h3 id="_29">新建证书模板（管理员）</h3>
-<h3 id="_30">上传已有的证书模板（管理员）</h3>
-<h3 id="_31">编辑证书（管理员）</h3></div>
+<h1 id="_1">状态码约定</h1>
+<p><strong>注意：基于 HTTP Code 约定，客户端统一用 POST 请求，服务端在网络正常的时候统一发送 HTTP 200，在封装好的 json 中写我们下面约定的状态码</strong></p>
+<p>前面为 code ， 后边为说明。</p>
+<p><strong>强制要求 HTTPS 传输。</strong></p>
+<h2 id="_2">非失败状态码</h2>
+<h3 id="_3">成功</h3>
+<p>0  OK</p>
+<h3 id="_4">信息性状态码</h3>
+<p>100 Continue</p>
+<h3 id="_5">重定向状态码</h3>
+<p><strong>直接发送 HTTP Code ，而不是封装在 json 里</strong></p>
+<p>301 Moved Permanently（301重定向）</p>
+<p>302 Found（302重定向）</p>
+<p>307 Temporary Redirect（307重定向）</p>
+<h2 id="_6">失败状态码</h2>
+<h3 id="_7">客户端错误</h3>
+<p>400 Bad Request</p>
+<p>401 Unauthorized（不要用<strong>403 Forbidden 状态码</strong>返回未鉴权！）</p>
+<p>403 Forbidden（拒绝了就是拒绝了，但是我们要细分一下）</p>
+<p>404 Not Found</p>
+<p>418 I'm a teapot</p>
+<h3 id="_8">服务端错误</h3>
+<p>500 Internal Server Error</p>
+<p>501 Not Implemented（如果不是 POST 请求，服务器会发501响应）</p>
+<p>503 Service Unavailable</p>
+<p>519 Not Json</p></div>
             </div>
         </div>
 
