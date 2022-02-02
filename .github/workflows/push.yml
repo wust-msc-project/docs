@@ -4,18 +4,16 @@ on:
   push
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
-    with:
-      python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-      architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
-    - run: |
-      pip install mkdocs
-      mkdocs build
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Display Python version
+        run: python --version
 
     - name: Deploy to Github Pages
       uses: JamesIves/github-pages-deploy-action@4.1.1
