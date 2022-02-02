@@ -4,8 +4,9 @@ on:
   push
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
@@ -14,9 +15,9 @@ jobs:
           python-version: '3.9'
       - name: Display Python version
         run: python --version
-
-    - name: Deploy to Github Pages
-      uses: JamesIves/github-pages-deploy-action@4.1.1
-      with:
-        branch: gh-page
-        folder: site
+      
+      - name: Deploy to Github Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-page
+          folder: site
