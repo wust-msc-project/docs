@@ -13,8 +13,12 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
-      - name: Display Python version
-        run: python --version
+      
+      - name: Install Mkdocs
+        run: pip install mkdocs
+      
+      - name: Build Pages
+        run: mkdocs build
       
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@4.1.1
