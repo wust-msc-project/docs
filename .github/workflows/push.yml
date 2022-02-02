@@ -8,17 +8,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-      with:
-        python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-        architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
-      - run: |
-        pip install mkdocs
-        mkdocs build
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+    with:
+      python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+      architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+    - run: |
+      pip install mkdocs
+      mkdocs build
 
-      - name: Deploy to Github Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.1
-        with:
-          branch: gh-page
-          folder: site
+    - name: Deploy to Github Pages
+      uses: JamesIves/github-pages-deploy-action@4.1.1
+      with:
+        branch: gh-page
+        folder: site
