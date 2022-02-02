@@ -187,7 +187,23 @@
 
 ### 找回密码（邮箱）
 
+`wust.tech/api/find-account-by-email`
 
+```json
+{
+    "email":"abc@qq.com",
+    "emailCode":"123123",
+    "newPwd":"xxx",
+    "newPwdRepeat":"xxx",
+}
+```
+
+```json
+{
+    "code":0,
+    "msg":"ok",
+}
+```
 
 ### 查看个人资料
 
