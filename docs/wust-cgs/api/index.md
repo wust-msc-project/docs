@@ -4,6 +4,8 @@
 
 **除了注册和登录，其他时间的 HTTP Head 里在 Authentication 字段里发送 Token 到服务器中**
 
+**每个接口，都要做一下鉴权！**
+
 ## 基础接口
 
 ### 发送手机验证码
@@ -293,15 +295,72 @@
 
 ## 证书系列
 
-### 新建证书模板（管理员）
+### 新建证书&初始化（管理员）
 
+`wust.tech/api/create-certification`
 
+```json
+{
+    "certName":"XBQ",
+    "picture":"我没想好这个上传什么，xbq你处理下",
+    "details":{
+        "name":{
+            "xPer":50%,
+            "yPer":50%,
+            "fontSize":13,
+            "fontType":"Consolas"
+        },
+        "QRCode":{
+            "xPer":50%,
+            "yPer"
+        }
+    }
+}
+```
 
-### 上传已有的证书模板（管理员）
-
-
+```json
+{
+    "code":0,
+    "msg":"ok",
+    "certId":1
+}
+```
 
 ### 编辑证书（管理员）
+
+`wust.tech/api/edit-certification`
+
+```json
+{
+    "certId":1,
+    
+}
+```
+
+
+
+### 下载证书（这个过程应该有鉴权和生成两步！）
+
+`wust.tech/api/download-certification`
+
+```json
+{
+    "phone":12312311231,
+    "certId":1
+}
+```
+
+```json
+{
+    "code":0,
+    "msg":"ok",
+    "link":"https://the.path.of.the.certification"
+}
+```
+
+
+
+
 
 
 
