@@ -126,7 +126,7 @@
 {
     "code":0,
     "msg":"ok",
-    "isBanned":"0",
+    "isBanned":0,
 }
 ```
 
@@ -209,39 +209,172 @@
 
 ### 查看个人资料
 
+`wust.tech/api/get-user-info`
 
+```json
+{
+}
+```
+
+```json
+{
+    "code":0,
+    "msg":"ok",
+    "details":{
+        "username":"张三",
+        "nickname":"qwq",
+        "phone":"13012341234",
+        "email":"abc@qq.com",
+        "company":"WUST 计卓20",
+    }
+}
+```
 
 ### 修改个人资料
 
+`wust.tech/api/edit-user-info`
 
+```json
+{
+    "details":{
+        "username":"张三",
+        "nickname":"qwq",
+        "phone":"13012341234",
+        "email":"abc@qq.com",
+        "company":"WUST 计卓20",
+    }
+}
+```
+
+```json
+{
+    "code":0,
+    "msg":"ok",
+}
+```
 
 ### 编辑用户权限（管理员）
 
+`wust.tech/api/edit-user-permissions`
 
+```json
+{
+    "phone":"13012341234",
+    "permissions":["users.ban",]
+}
+```
+
+这里的权限，需要我们设计一下都有什么。目前我的设计方案是：用户系统的权限为`users.permissions`.解释一下：`users`代表用户系统，`permissions`代表具体权限。比如`users.ban`代表可以封禁别人，`users.unban`代表可以解封别人。**我们把管理员所有的权限，解构成具体的一个一个小权限，到时候比较好做。**权限表我们另附一套。
+
+```json
+{
+    "code":0
+}
+```
 
 ### 封禁用户（管理员）
 
+`wust.tech/api/ban-user`
 
+```json
+{
+    "phone":"13012341234"
+}
+```
+
+```json
+{
+    "code":0,
+    "msg":"ok"
+}
+```
 
 ### 查询某人是否被封禁（管理员）
 
+`wust.tech/api/user-is-banned`
 
+```json
+{
+    "phone":"13012341234"
+}
+```
+
+```json
+{
+    "code":0,
+    "msg":"ok",
+    "isBanned":0
+}
+```
 
 ### 解封账户（管理员）
 
+`wust.tech/api/unban-user`
 
+```json
+{
+    "phone":"13012341234"
+}
+```
+
+```json
+{
+    "code":0,
+    "msg":"ok"
+}
+```
 
 ### 通过手机号查询账户（管理员）
 
+`wust.tech/api/get-user-by-phone`
 
+```json
+{
+    "phone":"13012341234"
+}
+```
+
+```json
+{
+    "code":0,
+    "msg":"ok",
+    "details":{
+        "username":"张三",
+        "nickname":"qwq",
+        "phone":"13012341234",
+        "email":"abc@qq.com",
+        "company":"WUST 计卓20",
+    }
+}
+```
 
 ### 通过姓名查找账户（管理员）
 
+`wust.tech/api/get-user-by-name`
 
+```json
+{
+    "username":"张三"
+}
+```
+
+```json
+{
+    "code":0,
+    "msg":"ok",
+    "details":{
+        "username":"张三",
+        "nickname":"qwq",
+        "phone":"13012341234",
+        "email":"abc@qq.com",
+        "company":"WUST 计卓20",
+    }
+}
+```
 
 ### 查询某个人参加过的活动（管理员）
 
-
+`wust.tech/api/get-
 
 ### 添加权限组（管理员）
 
