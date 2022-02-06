@@ -30,7 +30,7 @@
 
 ### 客户端错误
 
-400 Bad Request
+400 Invalid Request Body
 
 401 Unauthorized（不要用**403 Forbidden 状态码**返回未鉴权！）
 
@@ -40,6 +40,12 @@
 
 418 I'm a teapot
 
+421 User Already Exists
+
+422 Phone number too long
+
+423 Invalid password
+
 ### 服务端错误
 
 500 Internal Server Error
@@ -47,6 +53,4 @@
 501 Not Implemented（如果不是 POST 请求，服务器会发501响应）
 
 503 Service Unavailable
-
-519 Not Json
 

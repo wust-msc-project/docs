@@ -54,7 +54,7 @@
 
 ## 用户账户系列
 
-### 创建新用户
+### 创建新用户 ✓
 
 `wust.tech/api/create-user`
 
@@ -62,7 +62,7 @@
 
 ```json
 {
-	"nickname":"Kininaru",
+	"nickname":"Kininaru", // unique
 	"password":"ILoveXieboQian",//长度6-16之间的字符串，只能包含数字，大小写字母，且必须包含这三种的两种
 	"phone":"13012341233",//unique
 	"phoneCode":"123123",//手机验证码
