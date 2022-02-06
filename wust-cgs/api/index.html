@@ -129,6 +129,7 @@
 <h1 id="_1">开发接口文档</h1>
 <p><strong>mention: 所有请求请使用 POST 方法， GET 方法服务器不会响应。请求体和响应体均为 json ，其他格式服务器不会通过。</strong></p>
 <p><strong>除了注册和登录，其他时间的 HTTP Head 里在 Authentication 字段里发送 Token 到服务器中</strong></p>
+<p><strong>每个接口，都要做一下鉴权！</strong></p>
 <h2 id="_2">基础接口</h2>
 <h3 id="_3">发送手机验证码</h3>
 <p><code>wust.tech/api/phone-code</code></p>
@@ -284,9 +285,51 @@
 <h3 id="_33">添加活动（管理员）</h3>
 <h3 id="_34">编辑活动（管理员）</h3>
 <h2 id="_35">证书系列</h2>
-<h3 id="_36">新建证书模板（管理员）</h3>
-<h3 id="_37">上传已有的证书模板（管理员）</h3>
-<h3 id="_38">编辑证书（管理员）</h3></div>
+<h3 id="_36">新建证书&amp;初始化（管理员）</h3>
+<p><code>wust.tech/api/create-certification</code></p>
+<pre><code class="language-json">{
+    &quot;certName&quot;:&quot;XBQ&quot;,
+    &quot;picture&quot;:&quot;我没想好这个上传什么，xbq你处理下&quot;,
+    &quot;details&quot;:{
+        &quot;name&quot;:{
+            &quot;xPer&quot;:50%,
+            &quot;yPer&quot;:50%,
+            &quot;fontSize&quot;:13,
+            &quot;fontType&quot;:&quot;Consolas&quot;
+        },
+        &quot;QRCode&quot;:{
+            &quot;xPer&quot;:50%,
+            &quot;yPer&quot;
+        }
+    }
+}
+</code></pre>
+<pre><code class="language-json">{
+    &quot;code&quot;:0,
+    &quot;msg&quot;:&quot;ok&quot;,
+    &quot;certId&quot;:1
+}
+</code></pre>
+<h3 id="_37">编辑证书（管理员）</h3>
+<p><code>wust.tech/api/edit-certification</code></p>
+<pre><code class="language-json">{
+    &quot;certId&quot;:1,
+
+}
+</code></pre>
+<h3 id="_38">下载证书（这个过程应该有鉴权和生成两步！）</h3>
+<p><code>wust.tech/api/download-certification</code></p>
+<pre><code class="language-json">{
+    &quot;phone&quot;:12312311231,
+    &quot;certId&quot;:1
+}
+</code></pre>
+<pre><code class="language-json">{
+    &quot;code&quot;:0,
+    &quot;msg&quot;:&quot;ok&quot;,
+    &quot;link&quot;:&quot;https://the.path.of.the.certification&quot;
+}
+</code></pre></div>
             </div>
         </div>
 
