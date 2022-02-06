@@ -158,11 +158,11 @@
 }
 </code></pre>
 <h2 id="_5">用户账户系列</h2>
-<h3 id="_6">创建新用户</h3>
+<h3 id="_6">创建新用户 ✓</h3>
 <p><code>wust.tech/api/create-user</code></p>
 <p>请求体：</p>
 <pre><code class="language-json">{
-    &quot;nickname&quot;:&quot;Kininaru&quot;,
+    &quot;nickname&quot;:&quot;Kininaru&quot;, // unique
     &quot;password&quot;:&quot;ILoveXieboQian&quot;,//长度6-16之间的字符串，只能包含数字，大小写字母，且必须包含这三种的两种
     &quot;phone&quot;:&quot;13012341233&quot;,//unique
     &quot;phoneCode&quot;:&quot;123123&quot;,//手机验证码
