@@ -75,8 +75,17 @@
 {
     "code":0,
     "msg":"OK",
-    "token":"This is the token to me",//send a token to client.I suggest the token exp time is 1d.
+    "data":"This is the token to me",//send a token to client.I suggest the token exp time is 1d.
 }
+```
+
+出错时，`msg` 和 `data` 均为空，可能出现的 `code` 如下：
+
+```
+400: Invalid request body
+421: User Already Exists
+422: Phone number too long
+423: Invalid password
 ```
 
 ### 登录
