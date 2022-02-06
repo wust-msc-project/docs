@@ -172,8 +172,14 @@
 <pre><code class="language-json">{
     &quot;code&quot;:0,
     &quot;msg&quot;:&quot;OK&quot;,
-    &quot;token&quot;:&quot;This is the token to me&quot;,//send a token to client.I suggest the token exp time is 1d.
+    &quot;data&quot;:&quot;This is the token to me&quot;,//send a token to client.I suggest the token exp time is 1d.
 }
+</code></pre>
+<p>出错时，<code>msg</code> 和 <code>data</code> 均为空，可能出现的 <code>code</code> 如下：</p>
+<pre><code>400: Invalid request body
+421: User Already Exists
+422: Phone number too long
+423: Invalid password
 </code></pre>
 <h3 id="_7">登录</h3>
 <p><code>wust.tech/api/login</code></p>
