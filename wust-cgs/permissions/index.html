@@ -7,15 +7,15 @@
         
         
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>欢迎使用 WUST CGS 系统 - WUST MSC Documentations</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>权限表 - WUST MSC Documentations</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">WUST MSC Documentations</a>
+                <a class="navbar-brand" href="../..">WUST MSC Documentations</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -34,14 +34,14 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href=".." class="nav-link">欢迎</a>
+                                <a href="../.." class="nav-link">欢迎</a>
                             </li>
                             <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Wust cgs <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">欢迎使用 WUST CGS 系统</a>
+    <a href="../" class="dropdown-item">欢迎使用 WUST CGS 系统</a>
 </li>
                                     
   <li class="dropdown-submenu">
@@ -49,7 +49,7 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="api/" class="dropdown-item">开发接口文档</a>
+    <a href="../api/" class="dropdown-item">开发接口文档</a>
 </li>
     </ul>
   </li>
@@ -59,7 +59,7 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="permissions/" class="dropdown-item">权限表</a>
+    <a href="./" class="dropdown-item active">权限表</a>
 </li>
     </ul>
   </li>
@@ -69,7 +69,7 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="rules/" class="dropdown-item">状态码约定</a>
+    <a href="../rules/" class="dropdown-item">状态码约定</a>
 </li>
     </ul>
   </li>
@@ -84,12 +84,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href=".." class="nav-link">
+                                <a rel="prev" href="../api/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="api/" class="nav-link">
+                                <a rel="next" href="../rules/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -111,8 +111,12 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#wust-cgs" class="nav-link">欢迎使用 WUST CGS 系统</a>
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">权限表</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">用户系统</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -120,7 +124,34 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="wust-cgs">欢迎使用 WUST CGS 系统</h1></div>
+<h1 id="_1">权限表</h1>
+<p>使用方法：在后端<strong>硬编码</strong>权限，然后在用户的 DBA 中存一下每个人的权限。同时，新建一个权限组的表，这个表里应当有权限组 id ，权限组名称，权限组内所包含的权限，权限组是哪个权限组的<strong>父级</strong>。权限组 ID 应当暴露给前端。同时，权限组的名字和中文名（ name Nickname ）不应该重复。</p>
+<p>某个人的权限应当为：<strong>这个人所在的权限组的权限+这个人单独有的权限</strong>，重复了就筛掉，只保留一个。</p>
+<p>默认权限组：</p>
+<p><code>default</code> 学生权限组：<code>user.register</code> , <code>users.login</code> , <code>users.realNameAuth</code> , <code>users.email</code> , <code>users.phone</code> , <code>users.getInfo</code> , <code>users.editInfo</code> ,</p>
+<p><code>admin</code> 管理权限组： <code>default.permissions</code> , <code>users.getUsersInfo</code> , <code>users.editUsersInfo</code> , <code>users.ban</code> , <code>users.unban</code> , <code>users.inBanned</code> , <code>users.getAccount</code> , <code>users.getActivities</code> , </p>
+<p><code>root</code> 超级管理权限组：<code>admin.permissions</code> , <code>users.editPermissions</code> , <code>users.addPermissionGroup</code> , <code>users.delPermissionGroup</code> , <code>users.editPermissionGroup</code> , <code>users.moveUserIntoGroup</code> , </p>
+<h2 id="_2">用户系统</h2>
+<p><code>users.register</code> 注册</p>
+<p><code>users.login</code> 登录</p>
+<p><code>users.realNameAuth</code> 实名认证</p>
+<p><code>users.email</code> 用邮箱找回密码</p>
+<p><code>users.phone</code> 用手机找回密码</p>
+<p><code>users.changePwd</code> 修改密码</p>
+<p><code>users.getInfo</code> 获取自己的个人信息</p>
+<p><code>users.getUsersInfo</code> 获取某个人的用户信息</p>
+<p><code>users.editInfo</code> 编辑自己的个人信息</p>
+<p><code>users.editUsersInfo</code> 编辑某个人的用户信息</p>
+<p><code>users.editPermissions</code> 编辑某个人的权限</p>
+<p><code>users.ban</code> 封禁某个人</p>
+<p><code>users.isBanned</code> 查询某个人是否被封禁</p>
+<p><code>users.unban</code> 取消封禁某个人</p>
+<p><code>users.getAccount</code> 查找某个人账户</p>
+<p><code>users.getActivities</code> 查询某个人的活动</p>
+<p><code>users.addPermissionGroup</code> 添加一个权限组</p>
+<p><code>users.delPermissionGroup</code> 删除一个权限组</p>
+<p><code>users.editPermissionGroup</code> 修改权限组的内容和权限</p>
+<p><code>users.moveUserIntoGroup</code> 把某个人移动到某个权限组中</p></div>
             </div>
         </div>
 
@@ -129,11 +160,11 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "..",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

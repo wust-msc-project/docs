@@ -55,6 +55,16 @@
   </li>
                                     
   <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Permissions</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../permissions/" class="dropdown-item">权限表</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
     <a href="#" class="dropdown-item">Rules</a>
     <ul class="dropdown-menu">
             
@@ -79,7 +89,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../rules/" class="nav-link">
+                                <a rel="next" href="../permissions/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -111,11 +121,11 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_27" class="nav-link">活动系列</a>
+            <li class="nav-item" data-level="2"><a href="#_28" class="nav-link">活动系列</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_35" class="nav-link">证书系列</a>
+            <li class="nav-item" data-level="2"><a href="#_36" class="nav-link">证书系列</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -271,6 +281,7 @@
 <h3 id="_13">查看个人资料</h3>
 <p><code>wust.tech/api/get-user-info</code></p>
 <pre><code class="language-json">{
+    //这里，我觉得用GET就可以了，但是用POST，我不知道请求体发什么
 }
 </code></pre>
 <pre><code class="language-json">{
@@ -285,7 +296,25 @@
     }
 }
 </code></pre>
-<h3 id="_14">修改个人资料</h3>
+<h3 id="_14">查看某个人的个人资料（不是自己的）（管理员）</h3>
+<p><code>wust.tech/api/get-users-info</code></p>
+<pre><code class="language-json">{
+    &quot;phone&quot;:13012341234,
+}
+</code></pre>
+<pre><code class="language-json">{
+    &quot;code&quot;:0,
+    &quot;msg&quot;:&quot;ok&quot;,
+    &quot;details&quot;:{
+        &quot;username&quot;:&quot;张三&quot;,
+        &quot;nickname&quot;:&quot;qwq&quot;,
+        &quot;phone&quot;:&quot;13012341234&quot;,
+        &quot;email&quot;:&quot;abc@qq.com&quot;,
+        &quot;company&quot;:&quot;WUST 计卓20&quot;,
+    }
+}
+</code></pre>
+<h3 id="_15">修改个人资料</h3>
 <p><code>wust.tech/api/edit-user-info</code></p>
 <pre><code class="language-json">{
     &quot;details&quot;:{
@@ -302,7 +331,24 @@
     &quot;msg&quot;:&quot;ok&quot;,
 }
 </code></pre>
-<h3 id="_15">编辑用户权限（管理员）</h3>
+<h3 id="_16">修改某个人的个人资料</h3>
+<p><code>wust.tech/api/edit-users-info</code></p>
+<pre><code class="language-json">{
+    &quot;phone&quot;:13012341234,
+    &quot;details&quot;:{
+        &quot;username&quot;:&quot;张三&quot;,
+        &quot;nickname&quot;:&quot;qwq&quot;,
+        &quot;phone&quot;:&quot;13012341234&quot;,
+        &quot;email&quot;:&quot;abc@qq.com&quot;,
+        &quot;company&quot;:&quot;WUST 计卓20&quot;,
+    }
+}
+</code></pre>
+<pre><code class="language-json">{
+    &quot;code&quot;:0,
+}
+</code></pre>
+<h3 id="_17">编辑用户权限（管理员）</h3>
 <p><code>wust.tech/api/edit-user-permissions</code></p>
 <pre><code class="language-json">{
     &quot;phone&quot;:&quot;13012341234&quot;,
@@ -314,7 +360,7 @@
     &quot;code&quot;:0
 }
 </code></pre>
-<h3 id="_16">封禁用户（管理员）</h3>
+<h3 id="_18">封禁用户（管理员）</h3>
 <p><code>wust.tech/api/ban-user</code></p>
 <pre><code class="language-json">{
     &quot;phone&quot;:&quot;13012341234&quot;
@@ -325,7 +371,7 @@
     &quot;msg&quot;:&quot;ok&quot;
 }
 </code></pre>
-<h3 id="_17">查询某人是否被封禁（管理员）</h3>
+<h3 id="_19">查询某人是否被封禁（管理员）</h3>
 <p><code>wust.tech/api/user-is-banned</code></p>
 <pre><code class="language-json">{
     &quot;phone&quot;:&quot;13012341234&quot;
@@ -337,7 +383,7 @@
     &quot;isBanned&quot;:0
 }
 </code></pre>
-<h3 id="_18">解封账户（管理员）</h3>
+<h3 id="_20">解封账户（管理员）</h3>
 <p><code>wust.tech/api/unban-user</code></p>
 <pre><code class="language-json">{
     &quot;phone&quot;:&quot;13012341234&quot;
@@ -348,7 +394,7 @@
     &quot;msg&quot;:&quot;ok&quot;
 }
 </code></pre>
-<h3 id="_19">通过手机号查询账户（管理员）</h3>
+<h3 id="_21">通过手机号查询账户（管理员）</h3>
 <p><code>wust.tech/api/get-user-by-phone</code></p>
 <pre><code class="language-json">{
     &quot;phone&quot;:&quot;13012341234&quot;
@@ -366,7 +412,7 @@
     }
 }
 </code></pre>
-<h3 id="_20">通过姓名查找账户（管理员）</h3>
+<h3 id="_22">通过姓名查找账户（管理员）</h3>
 <p><code>wust.tech/api/get-user-by-name</code></p>
 <pre><code class="language-json">{
     &quot;username&quot;:&quot;张三&quot;
@@ -384,23 +430,71 @@
     }
 }
 </code></pre>
-<h3 id="_21">查询某个人参加过的活动（管理员）</h3>
-<p>`wust.tech/api/get-</p>
-<h3 id="_22">添加权限组（管理员）</h3>
-<h3 id="_23">删除权限组（管理员）</h3>
-<h3 id="_24">对某个权限组添加某个权限（管理员）</h3>
-<h3 id="_25">对某个权限组删除某个权限（管理员）</h3>
-<h3 id="_26">把某个用户移动到某个权限组中（管理员）</h3>
-<h2 id="_27">活动系列</h2>
-<h3 id="_28">查询个人参加过的活动</h3>
-<h3 id="_29">报名活动</h3>
-<h3 id="_30">拉取活动列表</h3>
-<h3 id="_31">查询活动的部分信息</h3>
-<h3 id="_32">查询活动信息（管理员）</h3>
-<h3 id="_33">添加活动（管理员）</h3>
-<h3 id="_34">编辑活动（管理员）</h3>
-<h2 id="_35">证书系列</h2>
-<h3 id="_36">新建证书&amp;初始化（管理员）</h3>
+<h3 id="_23">查询某个人参加过的活动（管理员）</h3>
+<p><code>wust.tech/api/get-user-activities</code></p>
+<pre><code class="language-json">{
+    //这里，我觉得用GET就可以了，但是用POST，我不知道请求体发什么
+}
+</code></pre>
+<pre><code class="language-json">{
+    &quot;details&quot;:[&quot;谷歌中国育人&quot;,&quot;微软中国培训&quot;,]
+}
+</code></pre>
+<h3 id="_24">添加权限组（管理员）</h3>
+<p><code>wust.tech/api/add-permission-group</code></p>
+<pre><code class="language-json">{
+    &quot;groupNickname&quot;:&quot;管理员123&quot;,
+    &quot;groupName&quot;:&quot;admin123&quot;,
+}
+</code></pre>
+<pre><code class="language-json">{
+    &quot;code&quot;:0,
+}
+</code></pre>
+<h3 id="_25">删除权限组（管理员）</h3>
+<p><code>wust.tech/api/delete-permission-group</code></p>
+<pre><code class="language-json">{
+    &quot;groupId&quot;:1,
+}
+</code></pre>
+<pre><code class="language-json">{
+    &quot;code&quot;:0,
+}
+</code></pre>
+<h3 id="_26">对某个权限组修改权限（管理员）</h3>
+<p><code>wust.tech/api/change-group-permission</code></p>
+<pre><code class="language-json">{
+    &quot;groupId&quot;:1,
+    &quot;groupNickname&quot;:&quot;管理员123&quot;,
+    &quot;groupName&quot;:&quot;admin123&quot;,
+    &quot;permissions&quot;:[&quot;users.login&quot;,&quot;users.changePwd&quot;,]
+}
+</code></pre>
+<pre><code class="language-json">{
+    &quot;code&quot;:0,
+}
+</code></pre>
+<h3 id="_27">把某个用户移动到某个权限组中（管理员）</h3>
+<p><code>wust.tech/api/move-user-into-group</code></p>
+<pre><code class="language-json">{
+    &quot;phone&quot;:13012341234,
+    &quot;groupId&quot;:1,
+}
+</code></pre>
+<pre><code class="language-json">{
+    &quot;code&quot;:0,
+}
+</code></pre>
+<h2 id="_28">活动系列</h2>
+<h3 id="_29">查询个人参加过的活动</h3>
+<h3 id="_30">报名活动</h3>
+<h3 id="_31">拉取活动列表</h3>
+<h3 id="_32">查询活动的部分信息</h3>
+<h3 id="_33">查询活动信息（管理员）</h3>
+<h3 id="_34">添加活动（管理员）</h3>
+<h3 id="_35">编辑活动（管理员）</h3>
+<h2 id="_36">证书系列</h2>
+<h3 id="_37">新建证书&amp;初始化（管理员）</h3>
 <p><code>wust.tech/api/create-certification</code></p>
 <pre><code class="language-json">{
     &quot;certName&quot;:&quot;XBQ&quot;,
@@ -425,14 +519,14 @@
     &quot;certId&quot;:1
 }
 </code></pre>
-<h3 id="_37">编辑证书（管理员）</h3>
+<h3 id="_38">编辑证书（管理员）</h3>
 <p><code>wust.tech/api/edit-certification</code></p>
 <pre><code class="language-json">{
     &quot;certId&quot;:1,
 
 }
 </code></pre>
-<h3 id="_38">下载证书（这个过程应该有鉴权和生成两步！）</h3>
+<h3 id="_39">下载证书（这个过程应该有鉴权和生成两步！）</h3>
 <p><code>wust.tech/api/download-certification</code></p>
 <pre><code class="language-json">{
     &quot;phone&quot;:12312311231,
