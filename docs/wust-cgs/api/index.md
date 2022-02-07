@@ -222,6 +222,31 @@
 
 ```json
 {
+    //这里，我觉得用GET就可以了，但是用POST，我不知道请求体发什么
+}
+```
+
+```json
+{
+    "code":0,
+    "msg":"ok",
+    "details":{
+        "username":"张三",
+        "nickname":"qwq",
+        "phone":"13012341234",
+        "email":"abc@qq.com",
+        "company":"WUST 计卓20",
+    }
+}
+```
+
+### 查看某个人的个人资料（不是自己的）（管理员）
+
+`wust.tech/api/get-users-info`
+
+```json
+{
+    "phone":13012341234,
 }
 ```
 
@@ -259,6 +284,29 @@
 {
     "code":0,
     "msg":"ok",
+}
+```
+
+### 修改某个人的个人资料
+
+`wust.tech/api/edit-users-info`
+
+```json
+{
+    "phone":13012341234,
+    "details":{
+        "username":"张三",
+        "nickname":"qwq",
+        "phone":"13012341234",
+        "email":"abc@qq.com",
+        "company":"WUST 计卓20",
+    }
+}
+```
+
+```json
+{
+    "code":0,
 }
 ```
 
@@ -383,27 +431,88 @@
 
 ### 查询某个人参加过的活动（管理员）
 
-`wust.tech/api/get-
+`wust.tech/api/get-user-activities`
+
+```json
+{
+    //这里，我觉得用GET就可以了，但是用POST，我不知道请求体发什么
+}
+```
+
+```json
+{
+    "details":["谷歌中国育人","微软中国培训",]
+}
+```
 
 ### 添加权限组（管理员）
 
+`wust.tech/api/add-permission-group`
 
+```json
+{
+    "groupNickname":"管理员123",
+    "groupName":"admin123",
+}
+```
+
+```json
+{
+    "code":0,
+}
+```
 
 ### 删除权限组（管理员）
 
+`wust.tech/api/delete-permission-group`
 
+```json
+{
+    "groupId":1,
+}
+```
 
-### 对某个权限组添加某个权限（管理员）
+```json
+{
+    "code":0,
+}
+```
 
+### 对某个权限组修改权限（管理员）
 
+`wust.tech/api/change-group-permission`
 
-### 对某个权限组删除某个权限（管理员）
+```json
+{
+    "groupId":1,
+    "groupNickname":"管理员123",
+    "groupName":"admin123",
+    "permissions":["users.login","users.changePwd",]
+}
+```
 
-
+```json
+{
+    "code":0,
+}
+```
 
 ### 把某个用户移动到某个权限组中（管理员）
 
+`wust.tech/api/move-user-into-group`
 
+```json
+{
+    "phone":13012341234,
+    "groupId":1,
+}
+```
+
+```json
+{
+    "code":0,
+}
+```
 
 ## 活动系列
 
